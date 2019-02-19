@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/visitasFragment">
+
+    <fragment
+        android:id="@+id/empresasFragment"
+        android:name="es.example.ale.fct.ui.empresas.EmpresasFragment"
+        android:label="Empresas"
+        tools:layout="@layout/fragment_empresas" />
+    <fragment
+        android:id="@+id/alumnosFragment"
+        android:name="es.example.ale.fct.ui.alumnos.AlumnosFragment"
+        android:label="Alumnos"
+        tools:layout="@layout/fragment_alumnos" />
+    <fragment
+        android:id="@+id/visitasFragment"
+        android:name="es.example.ale.fct.ui.visitas.VisitasFragment"
+        android:label="Visitas"
+        tools:layout="@layout/fragment_visitas" />
+
+</navigation>

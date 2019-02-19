@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item
+            android:id="@+id/empresasFragment"
+            android:icon="@drawable/ic_business_center_black_24dp"
+            android:title="@string/activity_main_nav_empresas"
+            app:showAsAction="ifRoom">
+        </item>
+        <item
+            android:id="@+id/visitasFragment"
+            android:icon="@drawable/ic_near_me_black_24dp"
+            android:title="@string/activity_main_nav_visitas"
+            app:showAsAction="ifRoom">
+        </item>
+        <item
+            android:id="@+id/alumnosFragment"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
+            android:title="@string/activity_main_nav_alumnos"
+            app:showAsAction="ifRoom">
+        </item>
+    </group>
+
+    <group>
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/activity_main_nav_settings"
+            app:showAsAction="ifRoom">
+        </item>
+    </group>
+
+</menu>

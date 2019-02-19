@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FCT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_main_nav_empresas">Empresas</string>
+    <string name="activity_main_nav_visitas">Visitas</string>
+    <string name="activity_main_nav_alumnos">Alumnos</string>
+    <string name="activity_main_nav_settings">Configuración</string>
+</resources>

@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_main_drawer_rlDrawerHeaderRoot_height"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_main_drawer_rlDrawerHeaderRoot_padding"
+    android:background="@drawable/fotito"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <!-- Imagen de perfil. Suele ser de 64px
+         Usamos una librería externa para que se circular -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_image"
+        android:layout_width="@dimen/activity_main_drawer_imgProfile_width"
+        android:layout_height="@dimen/activity_main_drawer_imgProfile_width"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        />
+
+    <!-- Nombre de Usuario -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Juana Maria Perez"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textStyle="bold" />
+
+    <!-- Correo de la cuenta -->
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="juanaperez01@gmail.com"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+</LinearLayout>
