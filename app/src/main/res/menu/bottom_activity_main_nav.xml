@@ -15,6 +15,12 @@
             app:showAsAction="ifRoom">
         </item>
         <item
+            android:id="@+id/visitasProximasFragment"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="@string/activity_main_nav_visitas_proximas"
+            app:showAsAction="ifRoom">
+        </item>
+        <item
             android:id="@+id/alumnosFragment"
             android:icon="@drawable/ic_supervisor_account_black_24dp"
             android:title="@string/activity_main_nav_alumnos"

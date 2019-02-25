@@ -42,5 +42,7 @@
     <dimen name="activity_main_drawer_imgProfile_width">64dp</dimen>
     <dimen name="fragment_collapsing_nestedScrollView_padding">10dp</dimen>
     <dimen name="fragment_collapsing_lblText_padding">10dp</dimen>
+    <dimen name="main_margin_8dp">8dp</dimen>
+    <dimen name="main_size_16dp">16dp</dimen>
 
 </resources>

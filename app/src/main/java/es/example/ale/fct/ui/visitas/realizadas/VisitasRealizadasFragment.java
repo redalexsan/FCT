@@ -1,4 +1,4 @@
-package es.example.ale.fct.ui.visitas;
+package es.example.ale.fct.ui.visitas.realizadas;
 
 
 import android.content.Context;
@@ -18,11 +18,11 @@ import es.example.ale.fct.R;
 import es.example.ale.fct.onToolbarChange;
 
 
-public class VisitasFragment extends Fragment {
+public class VisitasRealizadasFragment extends Fragment {
 
     private NavController navController;
     private onToolbarChange toolbarChange;
-    public VisitasFragment() {
+    public VisitasRealizadasFragment() {
     }
 
     @Override

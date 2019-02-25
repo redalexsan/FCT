@@ -33,9 +33,7 @@ public class MainActivity extends AppCompatActivity implements onToolbarChange{
     public void setUpToolbar(Toolbar toolbar){
         DrawerLayout drawerLayout = ActivityCompat.requireViewById(this,R.id.drawerLayout);
         setSupportActionBar(toolbar);
-
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.alumnosFragment,R.id.visitasFragment,R.id.empresasFragment).setDrawerLayout(drawerLayout).build();
-
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.alumnosFragment,R.id.visitasFragment,R.id.visitasProximasFragment,R.id.empresasFragment).setDrawerLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar,navController,appBarConfiguration);
     }
 

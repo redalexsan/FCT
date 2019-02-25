@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/visitasFragment">
+    app:startDestination="@id/visitasProximasFragment">
 
     <fragment
         android:id="@+id/empresasFragment"
@@ -17,8 +17,13 @@
         tools:layout="@layout/fragment_alumnos" />
     <fragment
         android:id="@+id/visitasFragment"
-        android:name="es.example.ale.fct.ui.visitas.VisitasFragment"
+        android:name="es.example.ale.fct.ui.visitas.realizadas.VisitasRealizadasFragment"
         android:label="Visitas"
         tools:layout="@layout/fragment_visitas" />
+    <fragment
+        android:id="@+id/visitasProximasFragment"
+        android:name="es.example.ale.fct.ui.visitas.proximas.ProximasVisitasFragment"
+        android:label="Proximas visitas"
+        tools:layout="@layout/fragment_proximas_visitas" />
 
 </navigation>

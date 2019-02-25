@@ -7,4 +7,5 @@
     <string name="activity_main_nav_visitas">Visitas</string>
     <string name="activity_main_nav_alumnos">Alumnos</string>
     <string name="activity_main_nav_settings">Configuración</string>
+    <string name="activity_main_nav_visitas_proximas">Proximas visitas</string>
 </resources>
