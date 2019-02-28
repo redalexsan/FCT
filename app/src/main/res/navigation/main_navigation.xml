@@ -14,7 +14,11 @@
         android:id="@+id/alumnosFragment"
         android:name="es.example.ale.fct.ui.alumnos.AlumnosFragment"
         android:label="Alumnos"
-        tools:layout="@layout/fragment_alumnos" />
+        tools:layout="@layout/fragment_alumnos" >
+        <action
+            android:id="@+id/action_alumnosFragment_to_formAlumnoFragment"
+            app:destination="@id/formAlumnoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/visitasFragment"
         android:name="es.example.ale.fct.ui.visitas.realizadas.VisitasRealizadasFragment"
@@ -25,5 +29,9 @@
         android:name="es.example.ale.fct.ui.visitas.proximas.ProximasVisitasFragment"
         android:label="Proximas visitas"
         tools:layout="@layout/fragment_proximas_visitas" />
+    <fragment
+        android:id="@+id/formAlumnoFragment"
+        android:name="es.example.ale.fct.ui.formularioAlumno.FormAlumnoFragment"
+        android:label="FormAlumnoFragment" />
 
 </navigation>

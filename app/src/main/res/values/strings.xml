@@ -8,4 +8,7 @@
     <string name="activity_main_nav_alumnos">Alumnos</string>
     <string name="activity_main_nav_settings">Configuración</string>
     <string name="activity_main_nav_visitas_proximas">Proximas visitas</string>
+    <string name="requiredCampo">Campo requerido</string>
+    <string name="invalidNumber">Teléfono inválido</string>
+    <string name="invalidEmail">Email no adminito</string>
 </resources>
