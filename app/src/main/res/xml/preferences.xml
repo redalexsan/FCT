@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ListPreference
+        android:defaultValue="@string/proximaVisita"
+        android:dialogTitle="@string/prefPageTitle"
+        android:entries="@array/prefInitialPage"
+        android:entryValues="@array/preInitialPage_values"
+        android:key="@string/prefInitalPageKey"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/prefInitalPageTitle"
+        />
+
+
+    <SeekBarPreference
+        android:defaultValue="@integer/defaultDays"
+        android:icon="@drawable/ic_hourglass_black_24dp"
+        android:key="@string/daysKey"
+        android:max="@integer/maxDays"
+        android:title="@string/daysTitle"
+        app:adjustable="true"
+        app:min="@integer/minDays"
+        app:seekBarIncrement="@integer/daysIncrement"
+        app:showSeekBarValue="true" />
+
+</PreferenceScreen>

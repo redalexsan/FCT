@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import es.example.ale.fct.MainActivityViewModel;
 import es.example.ale.fct.R;
 import es.example.ale.fct.data.RepositoryImpl;
 import es.example.ale.fct.data.local.AlumnoDao;
@@ -50,6 +51,7 @@ public class ProximasVisitasFragment extends Fragment {
     private FragmentProximasVisitasBinding binding;
     private ProximasVisitasFragmentViewModel viewModel;
     private ProximasVisitasFragmentAdapter listAdapter;
+    private MainActivityViewModel mainActivityViewModel;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -76,7 +78,7 @@ public class ProximasVisitasFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
-
+        mainActivityViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         AlumnoDao alumnoDao = AppDatabase.getInstance(getContext()).alumnoDao();
         VisitaDao visitaDao = AppDatabase.getInstance(getContext()).visitaDao();
         RepositoryImpl repository = new RepositoryImpl(alumnoDao,visitaDao);
@@ -105,19 +107,6 @@ public class ProximasVisitasFragment extends Fragment {
         lstVisitas.setLayoutManager(new LinearLayoutManager(requireContext()));
         lstVisitas.setItemAnimator(new DefaultItemAnimator());
         lstVisitas.setAdapter(listAdapter);
-
-//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
-//            @Override
-//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-//                return false;
-//            }
-//
-//            @Override
-//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-//                viewModel.deleteVisita(listAdapter.getItem(viewHolder.getAdapterPosition()));
-//            }
-//        });
-//        itemTouchHelper.attachToRecyclerView(lstVisitas);
     }
 
     private void getUltimaVisita(Alumno alumno) {
@@ -132,7 +121,7 @@ public class ProximasVisitasFragment extends Fragment {
                 try {
                     Date fecha = formato.parse(visita.getDia());
                     calendar.setTime(fecha);
-                    calendar.add(Calendar.DAY_OF_MONTH, 15);
+                    calendar.add(Calendar.DAY_OF_MONTH, mainActivityViewModel.getDaysPerMeeting());
 
                     nuevaFecha = formato.format(calendar.getTime());
                 } catch (ParseException e) {

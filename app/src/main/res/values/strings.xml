@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">FCT</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="empresa">Empresas</string>
+    <string name="alumno">Alumnos</string>
+    <string name="visitaRealizada">Visitas Realizadas</string>
+    <string name="proximaVisita">Proximas Visitas</string>
+    <string name="prefInitalPageKey">initialPAge</string>
+    <string name="daysKey">Days Key</string>
+    <string name="daysTitle">Dias para la reunión</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="activity_main_nav_empresas">Empresas</string>
     <string name="activity_main_nav_visitas">Visitas</string>
@@ -13,4 +19,6 @@
     <string name="invalidEmail">Email no adminito</string>
     <string name="invalidURL">URL no válida</string>
     <string name="horaMayorError">La hora fin debe de ser mayor</string>
+    <string name="prefPageTitle">Página Principal</string>
+    <string name="prefInitalPageTitle">Página Principal</string>
 </resources>

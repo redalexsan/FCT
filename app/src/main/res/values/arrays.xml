@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="prefInitialPage">
+        <item>
+            Empresas
+        </item>
+        <item>
+            Alumnos
+        </item>
+        <item>
+            Visitas Realizadas
+        </item>
+        <item>
+            Proximas Visitas
+        </item>
+    </string-array>
+
+    <string-array name="preInitialPage_values">
+        <item>@string/empresa</item>
+        <item>@string/alumno</item>
+        <item>@string/visitaRealizada</item>
+        <item>@string/proximaVisita</item>
+    </string-array>
+</resources>

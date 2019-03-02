@@ -71,5 +71,9 @@
         android:name="es.example.ale.fct.ui.listaAlumnos.ListaAlumnosFragment"
         android:label="Listado de alumnos"
         tools:layout="@layout/fragment_lista_alumnos" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="es.example.ale.fct.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 
 </navigation>
