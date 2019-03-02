@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import es.example.ale.fct.MainActivityViewModel;
 import es.example.ale.fct.R;
 import es.example.ale.fct.data.RepositoryImpl;
 import es.example.ale.fct.data.local.AppDatabase;
@@ -42,6 +43,7 @@ public class FormVisitaFragment extends Fragment implements DatePickerDialog.OnD
     private boolean isHoraInicio;
     private int horaInicio=0,horaFin=0;
     private FormVisitaFragmentViewModel viewModel;
+    private MainActivityViewModel mainActivityViewModel;
     private NavController navController;
     private String idVisita;
 
@@ -62,6 +64,12 @@ public class FormVisitaFragment extends Fragment implements DatePickerDialog.OnD
     }
 
     @Override
+    public void onDestroy() {
+        mainActivityViewModel.setNombreAlumnoSeleccionado(null);
+        super.onDestroy();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
@@ -69,6 +77,7 @@ public class FormVisitaFragment extends Fragment implements DatePickerDialog.OnD
         VisitaDao visitaDao = AppDatabase.getInstance(getContext()).visitaDao();
         RepositoryImpl repository = new RepositoryImpl(visitaDao);
 
+        mainActivityViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         viewModel = ViewModelProviders.of(this,new FormVisitaFragmentViewModelFactory(repository)).get(FormVisitaFragmentViewModel.class);
         calendar = Calendar.getInstance();
         initDialogs();
@@ -79,6 +88,9 @@ public class FormVisitaFragment extends Fragment implements DatePickerDialog.OnD
         binding.fab.setOnClickListener(v -> validar());
         if(!TextUtils.equals(idVisita,null))
             fillDatas();
+
+        binding.txtNombreAlumno.setOnClickListener(v -> navController.navigate(R.id.listaAlumnosFragment));
+        mainActivityViewModel.getNombreAlumnoSeleccionado().observe(this,nombre -> binding.txtNombreAlumno.setText(nombre));
     }
 
     private void fillDatas() {

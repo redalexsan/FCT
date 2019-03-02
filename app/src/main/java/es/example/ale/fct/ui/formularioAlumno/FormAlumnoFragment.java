@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,6 +22,7 @@ import es.example.ale.fct.data.local.AlumnoDao;
 import es.example.ale.fct.data.local.AppDatabase;
 import es.example.ale.fct.data.model.Alumno;
 import es.example.ale.fct.databinding.FragmentFormAlumnoBinding;
+import es.example.ale.fct.MainActivityViewModel;
 import es.example.ale.fct.utils.ValidationUtils;
 
 
@@ -30,6 +30,7 @@ public class FormAlumnoFragment extends Fragment {
 
     private FragmentFormAlumnoBinding formBinding;
     private FormAlumnoViewModelFragment viewModel;
+    private MainActivityViewModel mainActivityViewModel;
     private NavController navController;
     private String idAlumnoArg;
 
@@ -53,19 +54,28 @@ public class FormAlumnoFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         navController = NavHostFragment.findNavController(this);
-
+        mainActivityViewModel = ViewModelProviders.of(requireActivity()).get(MainActivityViewModel.class);
         AlumnoDao alumnoDao = AppDatabase.getInstance(getContext()).alumnoDao();
         RepositoryImpl repository = new RepositoryImpl(alumnoDao);
-
         viewModel = ViewModelProviders.of(this,new FormAlumnoViewModelFactoryFragment(repository)).get(FormAlumnoViewModelFragment.class);
         initViews();
+    }
+
+    @Override
+    public void onDestroy() {
+        mainActivityViewModel.setNombreEmpresaSeleccionada(null);
+        super.onDestroy();
     }
 
     private void initViews() {
         if(!TextUtils.equals(idAlumnoArg,null)){
             fillDatas();
         }
+
         formBinding.fab.setOnClickListener(v -> validar());
+        formBinding.txtEmpresa.setOnClickListener(v -> navController.navigate(R.id.listaEmpresasFragment));
+
+        mainActivityViewModel.getNombreEmpresaSeleccionada().observe(this, nombre -> formBinding.txtEmpresa.setText(nombre));
     }
 
     private void fillDatas() {

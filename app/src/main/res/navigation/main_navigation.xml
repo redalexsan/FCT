@@ -62,5 +62,14 @@
             android:name="idVisita"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/listaEmpresasFragment"
+        android:name="es.example.ale.fct.ui.listaEmpresas.ListaEmpresasFragment"
+        android:label="Listado de Empresas" />
+    <fragment
+        android:id="@+id/listaAlumnosFragment"
+        android:name="es.example.ale.fct.ui.listaAlumnos.ListaAlumnosFragment"
+        android:label="Listado de alumnos"
+        tools:layout="@layout/fragment_lista_alumnos" />
 
 </navigation>
