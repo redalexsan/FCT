@@ -8,15 +8,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import es.example.ale.fct.R;
 import es.example.ale.fct.data.model.Alumno;
+import es.example.ale.fct.ui.formularioAlumno.FormAlumnoFragment;
+import es.example.ale.fct.ui.formularioAlumno.FormAlumnoFragmentArgs;
 
 public class AlumnosFragmentAdapter extends ListAdapter<Alumno,AlumnosFragmentAdapter.ViewHolder> {
 
-    protected AlumnosFragmentAdapter() {
+    private NavController navController;
+
+    protected AlumnosFragmentAdapter(NavController navController) {
         super(new DiffUtil.ItemCallback<Alumno>() {
             @Override
             public boolean areItemsTheSame(@NonNull Alumno oldItem, @NonNull Alumno newItem) {
@@ -29,12 +35,13 @@ public class AlumnosFragmentAdapter extends ListAdapter<Alumno,AlumnosFragmentAd
                         oldItem.getTelf() == newItem.getTelf();
             }
         });
+        this.navController = navController;
     }
 
     @NonNull
     @Override
     public AlumnosFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_alumnos_item,parent,false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_alumnos_item,parent,false),navController);
     }
 
     @Override
@@ -58,12 +65,19 @@ public class AlumnosFragmentAdapter extends ListAdapter<Alumno,AlumnosFragmentAd
         private final TextView lblTelf;
 
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView,NavController navController) {
             super(itemView);
 
             lblName = ViewCompat.requireViewById(itemView,R.id.lblName);
-            lblEmail = ViewCompat.requireViewById(itemView,R.id.lblMail);
-            lblTelf = ViewCompat.requireViewById(itemView,R.id.lblTelf);
+            lblEmail = ViewCompat.requireViewById(itemView,R.id.txtHoraInicio);
+            lblTelf = ViewCompat.requireViewById(itemView,R.id.txtHoraFin);
+
+            itemView.setOnClickListener(v -> editAlumno(navController,getItem(getAdapterPosition())));
+        }
+
+        private void editAlumno(NavController navController,Alumno alumno) {
+            FormAlumnoFragmentArgs arg = new FormAlumnoFragmentArgs.Builder(String.valueOf(alumno.getId())).build();
+            navController.navigate(R.id.formAlumnoFragment,arg.toBundle());
         }
 
         public void bind(Alumno alumno){

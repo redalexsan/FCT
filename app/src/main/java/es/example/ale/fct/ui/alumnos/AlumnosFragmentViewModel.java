@@ -19,5 +19,5 @@ public class AlumnosFragmentViewModel extends ViewModel {
 
     LiveData<List<Alumno>> getAlumnos() { return  alumnos; }
 
-    void insertAlumno(Alumno alumno){ repository.insertAlumno(alumno);}
+    void deleteAlumno(Alumno alumno){ repository.deleteAlumno(alumno);}
 }

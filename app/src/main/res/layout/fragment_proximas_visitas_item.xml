@@ -26,60 +26,23 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/txtHoraInicio"
+            android:id="@+id/txtFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@+id/lblFecha"
             app:layout_constraintTop_toBottomOf="@+id/lblName"
-            tools:text="Empresa asignada" />
-
-        <TextView
-            android:id="@+id/txtHoraFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/lblHoraFin"
-            app:layout_constraintTop_toBottomOf="@+id/txtHoraInicio"
-            tools:text="666666666" />
+            tools:text="Cuanto antes" />
 
         <TextView
             android:id="@+id/lblFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Hora inicio:"
+            android:text="Fecha:"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lblName" />
-
-        <TextView
-            android:id="@+id/lblHoraFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Hora fin:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblFecha" />
-
-        <TextView
-            android:id="@+id/lblDia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="Dia: "
-            app:layout_constraintStart_toEndOf="@+id/lblName"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtDia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/lblDia"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

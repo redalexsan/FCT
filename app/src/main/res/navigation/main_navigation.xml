@@ -3,27 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/visitasProximasFragment">
+    app:startDestination="@+id/visitasProximasFragment">
 
     <fragment
         android:id="@+id/empresasFragment"
         android:name="es.example.ale.fct.ui.empresas.EmpresasFragment"
         android:label="Empresas"
-        tools:layout="@layout/fragment_empresas" />
+        tools:layout="@layout/fragment_empresas">
+        <action
+            android:id="@+id/action_empresasFragment_to_formEmpresaFragment"
+            app:destination="@id/formEmpresaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/alumnosFragment"
         android:name="es.example.ale.fct.ui.alumnos.AlumnosFragment"
         android:label="Alumnos"
-        tools:layout="@layout/fragment_alumnos" >
+        tools:layout="@layout/fragment_alumnos">
         <action
-            android:id="@+id/action_alumnosFragment_to_formAlumnoFragment"
+            android:id="@+id/destAlumnosToForm"
             app:destination="@id/formAlumnoFragment" />
     </fragment>
     <fragment
         android:id="@+id/visitasFragment"
         android:name="es.example.ale.fct.ui.visitas.realizadas.VisitasRealizadasFragment"
         android:label="Visitas"
-        tools:layout="@layout/fragment_visitas" />
+        tools:layout="@layout/fragment_visitas">
+        <action
+            android:id="@+id/action_visitasFragment_to_formVisitaFragment"
+            app:destination="@id/formVisitaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/visitasProximasFragment"
         android:name="es.example.ale.fct.ui.visitas.proximas.ProximasVisitasFragment"
@@ -32,6 +40,27 @@
     <fragment
         android:id="@+id/formAlumnoFragment"
         android:name="es.example.ale.fct.ui.formularioAlumno.FormAlumnoFragment"
-        android:label="FormAlumnoFragment" />
+        android:label="FormAlumnoFragment" >
+        <argument
+            android:name="idAlumno"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/formEmpresaFragment"
+        android:name="es.example.ale.fct.ui.formularioEmpresa.FormEmpresaFragment"
+        android:label="form_empresa_fragment"
+        tools:layout="@layout/form_empresa_fragment" >
+        <argument
+            android:name="idEmpresa"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/formVisitaFragment"
+        android:name="es.example.ale.fct.ui.formularioVisita.FormVisitaFragment"
+        android:label="FormVisitaFragment" >
+        <argument
+            android:name="idVisita"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

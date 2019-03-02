@@ -26,7 +26,7 @@
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/lblMail"
+            android:id="@+id/txtHoraInicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_margin_8dp"
@@ -35,12 +35,12 @@
             tools:text="Empresa asignada" />
 
         <TextView
-            android:id="@+id/lblTelf"
+            android:id="@+id/txtHoraFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_margin_8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblMail"
+            app:layout_constraintTop_toBottomOf="@+id/txtHoraInicio"
             tools:text="666666666"
             />
 

@@ -11,4 +11,6 @@
     <string name="requiredCampo">Campo requerido</string>
     <string name="invalidNumber">Teléfono inválido</string>
     <string name="invalidEmail">Email no adminito</string>
+    <string name="invalidURL">URL no válida</string>
+    <string name="horaMayorError">La hora fin debe de ser mayor</string>
 </resources>

@@ -14,6 +14,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "fct.db";
     public abstract AlumnoDao alumnoDao();
+    public abstract EmpresaDao empresaDao();
+    public abstract VisitaDao visitaDao();
+
     private static  volatile AppDatabase instance;
 
     public static AppDatabase getInstance(Context context){

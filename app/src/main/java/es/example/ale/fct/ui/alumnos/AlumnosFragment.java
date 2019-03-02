@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import es.example.ale.fct.R;
@@ -67,15 +68,25 @@ public class AlumnosFragment extends Fragment {
 
     private void setupViews(View view) {
         RecyclerView lstAlumnos = ViewCompat.requireViewById(view,R.id.lstAlumnos);
-        listAdapter = new AlumnosFragmentAdapter();
+        listAdapter = new AlumnosFragmentAdapter(navController);
         lstAlumnos.setHasFixedSize(true);
         lstAlumnos.setLayoutManager(new LinearLayoutManager(requireContext()));
         lstAlumnos.setItemAnimator(new DefaultItemAnimator());
         lstAlumnos.setAdapter(listAdapter);
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
 
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                viewModel.deleteAlumno(listAdapter.getItem(viewHolder.getAdapterPosition()));
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(lstAlumnos);
         FloatingActionButton fab = ViewCompat.requireViewById(view,R.id.fab);
-        fab.setOnClickListener(v -> viewModel.insertAlumno(alumnoPrueba));
-        fab.setOnClickListener(v -> navController.navigate(R.id.action_alumnosFragment_to_formAlumnoFragment));
+        fab.setOnClickListener(v -> navController.navigate(R.id.destAlumnosToForm));
     }
 
     private void setupToolbar() {

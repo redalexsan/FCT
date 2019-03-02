@@ -31,9 +31,16 @@ public class FormAlumnoFragment extends Fragment {
     private FragmentFormAlumnoBinding formBinding;
     private FormAlumnoViewModelFragment viewModel;
     private NavController navController;
-    public FormAlumnoFragment() {
-    }
+    private String idAlumnoArg;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments() != null){
+            FormAlumnoFragmentArgs args = FormAlumnoFragmentArgs.fromBundle(getArguments());
+            idAlumnoArg = args.getIdAlumno();
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +62,27 @@ public class FormAlumnoFragment extends Fragment {
     }
 
     private void initViews() {
+        if(!TextUtils.equals(idAlumnoArg,null)){
+            fillDatas();
+        }
         formBinding.fab.setOnClickListener(v -> validar());
+    }
+
+    private void fillDatas() {
+        viewModel.getSelectedAlumno(idAlumnoArg).observe(this, alumno -> {
+            formBinding.txtName.setText(alumno.getNombre());
+            formBinding.txtTelefono.setText(String.valueOf(alumno.getTelf()));
+            formBinding.txtMail.setText(alumno.getEmail());
+            formBinding.txtCurso.setText(alumno.getCurso());
+            if(!TextUtils.equals(alumno.getEmpresa(),null))
+                formBinding.txtEmpresa.setText(alumno.getEmpresa());
+            if(!TextUtils.equals(alumno.getNombreTutor(),null))
+                formBinding.txtNombreTutor.setText(alumno.getNombreTutor());
+            if(alumno.getTelfTutor() != 0)
+                formBinding.txtTelfTutor.setText(String.valueOf(alumno.getTelfTutor()));
+            if(!TextUtils.equals(alumno.getHorario(),null))
+                formBinding.txtHorario.setText(alumno.getHorario());
+        });
     }
 
     private void validar() {
@@ -70,9 +97,23 @@ public class FormAlumnoFragment extends Fragment {
     }
 
     private void insertAlumno() {
-        String telefono = formBinding.txtTelefono.getText().toString();
-        int numTelf = Integer.parseInt(telefono);
-        viewModel.newAlumno(new Alumno(formBinding.txtName.getText().toString(),numTelf,formBinding.txtMail.getText().toString(),formBinding.txtCurso.getText().toString()));
+        Alumno alumno = new Alumno(formBinding.txtName.getText().toString(),Integer.parseInt(formBinding.txtTelefono.getText().toString()),formBinding.txtMail.getText().toString(),formBinding.txtCurso.getText().toString());
+
+        if(!TextUtils.isEmpty(formBinding.txtEmpresa.getText().toString()))
+            alumno.setEmpresa(formBinding.txtEmpresa.getText().toString());
+        if(!TextUtils.isEmpty(formBinding.txtNombreTutor.getText().toString()))
+            alumno.setNombreTutor(formBinding.txtNombreTutor.getText().toString());
+        if(!TextUtils.isEmpty(formBinding.txtTelfTutor.getText().toString()))
+            alumno.setTelfTutor(Integer.parseInt(formBinding.txtTelfTutor.getText().toString()));
+        if(!TextUtils.isEmpty(formBinding.txtHorario.getText().toString()))
+            alumno.setHorario(formBinding.txtHorario.getText().toString());
+
+        if(!TextUtils.equals(idAlumnoArg,null)){
+            alumno.setId(Long.parseLong(idAlumnoArg));
+            viewModel.updateAlumno(alumno);
+        }
+        else
+            viewModel.newAlumno(alumno);
         navController.popBackStack();
     }
 
