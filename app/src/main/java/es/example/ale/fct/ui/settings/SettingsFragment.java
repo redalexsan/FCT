@@ -1,16 +1,17 @@
 package es.example.ale.fct.ui.settings;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceManager;
 import es.example.ale.fct.MainActivityViewModel;
 import es.example.ale.fct.R;
 import es.example.ale.fct.onToolbarChange;
@@ -22,6 +23,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     private MainActivityViewModel viewModel;
 
     private final SharedPreferences.OnSharedPreferenceChangeListener onSharedPreferenceChangeListener = this;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        toolbarChange = (onToolbarChange) context;
+    }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -49,15 +56,19 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
 
     private void setUpToolBar() {
-        //Peta
+        Toolbar toolbar = ViewCompat.requireViewById(requireView(),R.id.toolbarPrefence);
+        toolbarChange.setUpToolbarFragment(toolbar);
 //        ((AppCompatActivity) requireActivity()).setSupportActionBar(requireActivity().findViewById(R.id.toolbarPrefence));
 //        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 //        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         viewModel.setDefaultPage(sharedPreferences.getString(getString(R.string.prefInitalPageKey),getString(R.string.proximaVisita)));
         viewModel.setDaysPerMeeting(sharedPreferences.getInt(getString(R.string.daysKey),15));
     }
+
+
 }

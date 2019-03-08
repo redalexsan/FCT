@@ -3,6 +3,7 @@ package es.example.ale.fct;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements onToolbarChange{
 
     private MainActivityViewModel viewModel;
     private NavController navController;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +37,10 @@ public class MainActivity extends AppCompatActivity implements onToolbarChange{
         viewModel.setDefaultPage(preferences.getString(getString(R.string.prefInitalPageKey), getString(R.string.proximaVisita)));
         viewModel.setDaysPerMeeting(preferences.getInt(getString(R.string.daysKey),15));
         setupNavigationDrawer();
-        setUpNavigationGraph();
+        if(savedInstanceState == null)
+           setUpNavigationGraph();
     }
+
 
     private void setUpNavigationGraph() {
         int startDestination = 0;
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements onToolbarChange{
     }
 
     public void setUpToolbar(Toolbar toolbar){
-        DrawerLayout drawerLayout = ActivityCompat.requireViewById(this,R.id.drawerLayout);
+        drawerLayout = ActivityCompat.requireViewById(this,R.id.drawerLayout);
         setSupportActionBar(toolbar);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.alumnosFragment,R.id.visitasFragment,R.id.visitasProximasFragment,R.id.empresasFragment).setDrawerLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar,navController,appBarConfiguration);
@@ -79,5 +83,14 @@ public class MainActivity extends AppCompatActivity implements onToolbarChange{
     @Override
     public void setUpToolbarFragment(Toolbar toolbar) {
         setUpToolbar(toolbar);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+            super.onBackPressed();
     }
 }
