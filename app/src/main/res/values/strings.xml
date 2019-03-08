@@ -21,4 +21,8 @@
     <string name="horaMayorError">La hora fin debe de ser mayor</string>
     <string name="prefPageTitle">Página Principal</string>
     <string name="prefInitalPageTitle">Página Principal</string>
+    <string name="main_not_students_yet">Registre un nuevo alumno</string>
+    <string name="not_companies_yet">Registre una empresa</string>
+    <string name="not_reunion_yet">Realice una visita</string>
+    <string name="not_reunion_made_yet">Necesita alumnos para realizar visitas</string>
 </resources>

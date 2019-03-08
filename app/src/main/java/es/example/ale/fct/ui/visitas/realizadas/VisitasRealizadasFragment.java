@@ -63,7 +63,10 @@ public class VisitasRealizadasFragment extends Fragment {
         RepositoryImpl repository = new RepositoryImpl(visitaDao);
 
         viewModel = ViewModelProviders.of(this,new VisitasRealizadasFragmentViewModelFactory(repository)).get(VisitasRealizadasFragmentViewModel.class);
-        viewModel.getVisitas().observe(this, visitas -> listAdapter.submitList(visitas) );
+        viewModel.getVisitas().observe(this, visitas -> {
+            binding.lblEmptyView.setVisibility(visitas.size() == 0 ? View.VISIBLE : View.INVISIBLE);
+            listAdapter.submitList(visitas);
+        } );
         initViews();
         setupToolbar();
     }

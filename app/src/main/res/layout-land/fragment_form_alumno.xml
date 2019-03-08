@@ -31,8 +31,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.formularioAlumno.FormAlumnoFragment"
-            android:layout_marginTop="?attr/actionBarSize">
+            android:layout_marginTop="?attr/actionBarSize"
+            tools:context=".ui.formularioAlumno.FormAlumnoFragment">
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -59,8 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtInputMail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtInputName">
 
@@ -68,20 +67,20 @@
                     android:id="@+id/txtTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="Teléfono" />
+                    android:hint="Teléfono"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInputMail"
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInputTelf">
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txtInputTelf"
+                app:layout_constraintTop_toBottomOf="@+id/txtInputName">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtMail"
@@ -96,10 +95,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtInputEmrpesa"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInputMail">
+                app:layout_constraintTop_toBottomOf="@+id/txtInputTelf">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtCurso"
@@ -110,14 +109,14 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInputEmrpesa"
-                android:layout_width="0dp"
+                android:layout_width="395dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInputCurso">
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txtInputCurso"
+                app:layout_constraintTop_toBottomOf="@+id/txtInputMail">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtEmpresa"
@@ -134,10 +133,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtInputTelfTutor"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInputEmrpesa">
+                app:layout_constraintTop_toBottomOf="@+id/txtInputCurso">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNombreTutor"
@@ -150,19 +149,19 @@
                 android:id="@+id/txtInputTelfTutor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtInputNombreTutor">
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/txtInputNombreTutor"
+                app:layout_constraintTop_toBottomOf="@+id/txtInputEmrpesa">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtTelfTutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="Teléfono del tutor" />
+                    android:hint="Teléfono del tutor"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -172,7 +171,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtInputTelfTutor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtInputTelfTutor">
 

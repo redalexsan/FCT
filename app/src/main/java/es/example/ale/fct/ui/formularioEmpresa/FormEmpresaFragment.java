@@ -1,5 +1,6 @@
 package es.example.ale.fct.ui.formularioEmpresa;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
@@ -20,6 +23,7 @@ import es.example.ale.fct.data.local.AppDatabase;
 import es.example.ale.fct.data.local.EmpresaDao;
 import es.example.ale.fct.data.model.Empresa;
 import es.example.ale.fct.databinding.FormEmpresaFragmentBinding;
+import es.example.ale.fct.onToolbarChange;
 import es.example.ale.fct.utils.ValidationUtils;
 
 public class FormEmpresaFragment extends Fragment {
@@ -28,6 +32,14 @@ public class FormEmpresaFragment extends Fragment {
     private FormEmpresaFragmentBinding binding;
     private NavController navController;
     private String idEmpresaArg;
+    private onToolbarChange toolbarChange;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        toolbarChange = (onToolbarChange) context;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +66,12 @@ public class FormEmpresaFragment extends Fragment {
 
         mViewModel = ViewModelProviders.of(this, new FormEmpresaFragmentViewModelFactory(repository)).get(FormEmpresaViewModelFragment.class);
         initViews();
+        setupToolbar();
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = ViewCompat.requireViewById(requireView(), R.id.toolbar);
+        toolbarChange.setUpToolbarFragment(toolbar);
     }
 
     private void initViews() {

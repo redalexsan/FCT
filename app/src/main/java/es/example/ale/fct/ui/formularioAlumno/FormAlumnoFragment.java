@@ -1,9 +1,13 @@
 package es.example.ale.fct.ui.formularioAlumno;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -23,6 +27,7 @@ import es.example.ale.fct.data.local.AppDatabase;
 import es.example.ale.fct.data.model.Alumno;
 import es.example.ale.fct.databinding.FragmentFormAlumnoBinding;
 import es.example.ale.fct.MainActivityViewModel;
+import es.example.ale.fct.onToolbarChange;
 import es.example.ale.fct.utils.ValidationUtils;
 
 
@@ -32,7 +37,14 @@ public class FormAlumnoFragment extends Fragment {
     private FormAlumnoViewModelFragment viewModel;
     private MainActivityViewModel mainActivityViewModel;
     private NavController navController;
+    private onToolbarChange toolbarChange;
     private String idAlumnoArg;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        toolbarChange = (onToolbarChange) context;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +71,12 @@ public class FormAlumnoFragment extends Fragment {
         RepositoryImpl repository = new RepositoryImpl(alumnoDao);
         viewModel = ViewModelProviders.of(this,new FormAlumnoViewModelFactoryFragment(repository)).get(FormAlumnoViewModelFragment.class);
         initViews();
+        setupToolbar();
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = ViewCompat.requireViewById(requireView(), R.id.toolbar);
+        toolbarChange.setUpToolbarFragment(toolbar);
     }
 
     @Override

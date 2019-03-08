@@ -3,9 +3,13 @@ package es.example.ale.fct.ui.formularioVisita;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -32,6 +36,7 @@ import es.example.ale.fct.data.local.AppDatabase;
 import es.example.ale.fct.data.local.VisitaDao;
 import es.example.ale.fct.data.model.Visita;
 import es.example.ale.fct.databinding.FragmentFormVisitaBinding;
+import es.example.ale.fct.onToolbarChange;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +51,13 @@ public class FormVisitaFragment extends Fragment implements DatePickerDialog.OnD
     private MainActivityViewModel mainActivityViewModel;
     private NavController navController;
     private String idVisita;
+    private onToolbarChange toolbarChange;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        toolbarChange = (onToolbarChange) context;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +94,12 @@ public class FormVisitaFragment extends Fragment implements DatePickerDialog.OnD
         calendar = Calendar.getInstance();
         initDialogs();
         initViews();
+        setupToolbar();
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = ViewCompat.requireViewById(requireView(), R.id.toolbar);
+        toolbarChange.setUpToolbarFragment(toolbar);
     }
 
     private void initViews() {

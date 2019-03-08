@@ -65,7 +65,10 @@ public class EmpresasFragment extends Fragment {
         RepositoryImpl repository = new RepositoryImpl(empresaDao);
 
         viewModel = ViewModelProviders.of(this,new EmpresaFragmentViewModelFactory(repository)).get(EmpresaFragmentViewModel.class);
-        viewModel.getEmpresas().observe(this,empresas -> listAdapter.submitList(empresas));
+        viewModel.getEmpresas().observe(this,empresas -> {
+            binding.lblEmptyView.setVisibility(empresas.size() == 0 ? View.VISIBLE : View.INVISIBLE);
+            listAdapter.submitList(empresas);
+        });
 
         initViews();
         setupToolbar();

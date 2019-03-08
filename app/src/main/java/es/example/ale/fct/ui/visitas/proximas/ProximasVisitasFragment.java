@@ -95,8 +95,12 @@ public class ProximasVisitasFragment extends Fragment {
         });
         setUpRecyclerView();
         viewModel.getProximasVisitas().observe(this,visitas ->{
-            if(visitas.size() != 0)
+            if(visitas.size() != 0) {
                 listAdapter.submitList(visitas);
+                binding.lblEmptyView.setVisibility(View.INVISIBLE);
+            }
+            else
+                binding.lblEmptyView.setVisibility(View.VISIBLE);
         });
     }
 

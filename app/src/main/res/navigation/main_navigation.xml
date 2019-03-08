@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/formAlumnoFragment"
         android:name="es.example.ale.fct.ui.formularioAlumno.FormAlumnoFragment"
-        android:label="FormAlumnoFragment" >
+        android:label="Datos Alumno">
         <argument
             android:name="idAlumno"
             app:argType="string" />
@@ -48,8 +48,8 @@
     <fragment
         android:id="@+id/formEmpresaFragment"
         android:name="es.example.ale.fct.ui.formularioEmpresa.FormEmpresaFragment"
-        android:label="form_empresa_fragment"
-        tools:layout="@layout/form_empresa_fragment" >
+        android:label="Datos de empresa"
+        tools:layout="@layout/form_empresa_fragment">
         <argument
             android:name="idEmpresa"
             app:argType="string" />
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/formVisitaFragment"
         android:name="es.example.ale.fct.ui.formularioVisita.FormVisitaFragment"
-        android:label="FormVisitaFragment" >
+        android:label="Datos Visita">
         <argument
             android:name="idVisita"
             app:argType="string" />
